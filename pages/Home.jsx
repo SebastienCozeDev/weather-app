@@ -1,9 +1,14 @@
-import {Text} from "react-native";
+import {Text, View} from "react-native";
+import {style} from "./Home.style";
 
 export function Home() {
   return (
     <>
-      <Text>Home</Text>
+      <View style={style.basicWeatherContainer}>
+        <Text style={{ fontSize: 60, color: "white", }}>Hello</Text>
+      </View>
+      <View style={style.searchbarContainer}></View>
+      <View style={style.advancedWeatherContainer}></View>
     </>
   );
 }
