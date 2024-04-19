@@ -40,6 +40,13 @@ export function Home() {
     }
   }
 
+  /**
+   * Fetch the weather from the user's coordinates.
+   *
+   * @param coordinates The user's coordinates.
+   *
+   * @return {Promise<void>} The weather data.
+   */
   async function fetchWeather(coordinates) {
     const weatherResponse = await WeatherAPI.fetchWeatherFromCoords(coordinates);
     setWeather(weatherResponse);
