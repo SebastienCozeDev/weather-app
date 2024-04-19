@@ -2,6 +2,7 @@ import {Text, View} from "react-native";
 import {style} from "./Home.style";
 import {getCurrentPositionAsync, requestForegroundPermissionsAsync} from "expo-location";
 import {useState, useEffect} from "react";
+import {WeatherAPI} from "../api/weather";
 
 /**
  * Home component.
@@ -12,10 +13,17 @@ import {useState, useEffect} from "react";
  */
 export function Home() {
   const [coords, setCoords] = useState({});
+  const [weather, setWeather] = useState();
 
   useEffect(() => {
     getUserCoords().then();
   }, []);
+
+  useEffect(() => {
+    if (coords) {
+      fetchWeather(coords).then();
+    }
+  }, [coords]);
 
   /**
    * Get the user's coordinates.
@@ -31,6 +39,13 @@ export function Home() {
       setCoords({ lat: "48.85", lng: "2.35" });
     }
   }
+
+  async function fetchWeather(coordinates) {
+    const weatherResponse = await WeatherAPI.fetchWeatherFromCoords(coordinates);
+    setWeather(weatherResponse);
+  }
+
+  console.log(weather);
 
   return (
     <>
