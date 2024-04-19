@@ -5,6 +5,13 @@ import { ImageBackground } from "react-native";
 import backgroundImg from "./assets/background.png";
 import {StatusBar} from "expo-status-bar/build/StatusBar";
 
+/**
+ * App component.
+ *
+ * @return {JSX.Element} The JSX element.
+ *
+ * @constructor
+ */
 export default function App() {
   return (
     <ImageBackground source={backgroundImg} style={style.backgroundImgContainer} imageStyle={style.backgroundImg}>

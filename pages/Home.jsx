@@ -3,6 +3,13 @@ import {style} from "./Home.style";
 import {getCurrentPositionAsync, requestForegroundPermissionsAsync} from "expo-location";
 import {useState, useEffect} from "react";
 
+/**
+ * Home component.
+ *
+ * @return {JSX.Element} The JSX element.
+ *
+ * @constructor
+ */
 export function Home() {
   const [coords, setCoords] = useState({});
 
@@ -10,6 +17,11 @@ export function Home() {
     getUserCoords().then();
   }, []);
 
+  /**
+   * Get the user's coordinates.
+   *
+   * @return {Promise<void>} The user's coordinates.
+   */
   async function getUserCoords() {
     let {status} = await requestForegroundPermissionsAsync()
     if (status === "granted") {
@@ -19,8 +31,6 @@ export function Home() {
       setCoords({ lat: "48.85", lng: "2.35" });
     }
   }
-
-  console.log(coords);
 
   return (
     <>
