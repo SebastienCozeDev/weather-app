@@ -3,6 +3,7 @@ import {style} from "./Home.style";
 import {getCurrentPositionAsync, requestForegroundPermissionsAsync} from "expo-location";
 import {useState, useEffect} from "react";
 import {WeatherAPI} from "../api/weather";
+import {CustomText} from "../components/CustomText/CustomText";
 
 /**
  * Home component.
@@ -52,11 +53,10 @@ export function Home() {
     setWeather(weatherResponse);
   }
 
-  console.log(weather);
-
   return (
     <>
       <View style={style.basicWeatherContainer}>
+        <CustomText style={{ fontSize: 60 }}>Weather</CustomText>
       </View>
       <View style={style.searchbarContainer}></View>
       <View style={style.advancedWeatherContainer}></View>
